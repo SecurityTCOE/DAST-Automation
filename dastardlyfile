@@ -16,9 +16,9 @@ pipeline {
             steps {
                 cleanWs()
                 sh '''
-                    docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
+                    docker run --user burpsuite \
                     -e DASTARDLY_TARGET_URL=${DASTARDLY_TARGET_URL} \
-                    -e DASTARDLY_OUTPUT_FILE=${WORKSPACE}/dastardly-report.xml \
+                    -e DASTARDLY_OUTPUT_FILE=./dastardly-report.xml \
                     ${IMAGE_WITH_TAG}
                 '''
             }
